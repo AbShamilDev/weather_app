@@ -28,12 +28,21 @@ export const SwithesWrapper = styled.div`
   gap: 10px;
 `;
 
+export const Form = styled.form`
+  display: flex;
+  width: 50%;
+  flex-wrap: wrap;
+  gap: 10px;
+  height: fit-content;
+`;
+
 export const Input = styled.input`
   font-size: inherit;
-  margin-right: 15px;
   padding: 10px 20px;
   border: none;
   border-radius: 30px;
+  min-width: 200px;
+  width: 70%;
 `;
 
 export const Button = styled.button`

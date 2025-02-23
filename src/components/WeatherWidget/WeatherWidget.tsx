@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import {
   CartesianGrid,
   LineChart,
@@ -13,6 +13,7 @@ import moment from "moment";
 import {
   Button,
   ControlsWrapper,
+  Form,
   Input,
   SwithesWrapper,
   WidgetWrapper,
@@ -60,6 +61,7 @@ function WeatherWidget() {
           humidity: item.main.humidity,
           windSpeed: item.wind.speed,
         }));
+        const city = response.data.city.name;
 
         setCitiesState((prev) =>
           prev.some((prevCity) => prevCity.name === city)
@@ -83,7 +85,10 @@ function WeatherWidget() {
           }
           return [...prev, { city: city, dataPoints: data }];
         });
-      });
+      })
+      .catch((err: AxiosError) =>
+        alert(err.status === 404 ? `Город ${city} не найден` : "Ошибка запроса")
+      );
 
   const onClickHandler = () => {
     getWeather(city);
@@ -128,7 +133,7 @@ function WeatherWidget() {
   return (
     <WidgetWrapper>
       <ControlsWrapper>
-        <form
+        <Form
           onSubmit={(ev) => {
             ev.preventDefault();
             city && onClickHandler();
@@ -136,7 +141,7 @@ function WeatherWidget() {
         >
           <Input id="city" type="text" value={city} onChange={(ev) => setCity(ev.target.value)} />
           <Button>Найти</Button>
-        </form>
+        </Form>
 
         <SwithesWrapper>
           <DatatypeSwitch onChange={handleDataTypeChange} value={dataType} />

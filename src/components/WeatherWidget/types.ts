@@ -30,6 +30,9 @@ interface IWeatherData {
 }
 
 export interface IWeatherResponse {
+  city: {
+    name: string;
+  };
   list: IWeatherData[];
 }
 

@@ -5,6 +5,7 @@ export const LegendWrapper = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap;
   gap: 20px;
 `;
 
