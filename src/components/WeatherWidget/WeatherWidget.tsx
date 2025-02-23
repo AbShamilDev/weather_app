@@ -37,7 +37,7 @@ const intervals = {
   8: 0,
 };
 
-export const colors = ["#fad400", "#14da9e", "#932ac4", "#2a0fc2"];
+export const colors = ["#fad400", "#14da9e", "#ff6384", "#36a2eb", "#cc65fe", "#932ac4", "#2a0fc2"];
 
 function WeatherWidget() {
   const [city, setCity] = useState<string>("");
